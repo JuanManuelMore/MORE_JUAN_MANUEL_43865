@@ -1,0 +1,28 @@
+{% extends 'miapp/base.html' %}
+{%load static%}
+
+
+{% block titulo %}
+Propuestas
+{% endblock titulo %}
+
+{% block cabecera %}
+<h1 class="display-2 font-weight-bold my-3">Listado de propuestas</h1>
+{% endblock cabecera %}
+    
+{% block contenido %}
+{% for propuestas in Propuestas %}
+<tr>
+    <td>{{ propuestas.id }}</td>
+    <td>{{ propuestas.titulo }}</td>
+    <td>{{ propuestas.desarrollo }}</td>
+    <td>{{ propuestas.contacto }}</td>
+    <td>{{ propuestas.fechaSolicitud }}</td>
+</tr>
+{% endfor %}
+{% endblock contenido %}
+
+    
+
+
+

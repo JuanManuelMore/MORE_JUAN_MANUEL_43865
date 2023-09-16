@@ -1,0 +1,20 @@
+{% extends 'miapp/base.html' %}
+{%load static%}
+{% block titulo %}
+Crear nuevo perfil de desarrollador
+{% endblock titulo %}
+{% block cabecera %}
+<h1 class="display-2 font-weight-bold my-3">Crear nuevo perfil de desarrollador</h1>
+{% endblock cabecera %}
+    
+
+
+{% block contenido %}
+<form action="" method="POST">
+  {% csrf_token %} 
+  <table>
+      {{ form.as_table }}
+  </table>
+  <input type="submit" value="Enviar">
+</form>
+{% endblock contenido %}

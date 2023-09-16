@@ -1,0 +1,63 @@
+{% extends 'miapp/base.html' %} 
+{% load static %} 
+{% block titulo %}Posteos{% endblock titulo %} 
+{% block cabecera %}<h1 class="display-2 font-weight-bold my-3">Posteos</h1> {% endblock cabecera %} 
+{% block contenido %}
+<table>
+    <tr>
+        <td width="200"><h2>Posteos</h2></td>
+        <td>
+            <a
+            href="{% url 'miapp:create_posteos' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+
+      <th>Titulo</th>
+
+      <th>Fecha de post</th>
+
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in posteos_list %}
+    <tr>
+
+      <td>{{ a.titulo }}</td>
+
+      <td>{{ a.fechaSolicitud }}</td>
+
+
+      <td>
+        
+        <a href="{% url 'miapp:detail_posteos' a.id %}"
+        class="btn btn-primary btn-sm"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+        ><i  class="fa fa-search fa-sm" title="View Record"></i>
+       </a>
+        <a
+          href="{% url 'miapp:update_posteos' a.id %}"
+          class="btn btn-primary btn-sm"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+        </a>
+        <a
+          href="{% url 'miapp:delete_posteos' a.id %}"
+          class="btn btn-primary btn-sm"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock contenido %}

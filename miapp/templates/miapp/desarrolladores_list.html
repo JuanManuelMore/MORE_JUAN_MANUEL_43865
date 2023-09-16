@@ -1,0 +1,66 @@
+{% extends 'miapp/base.html' %}
+{%load static%}
+{% block titulo %}
+Desarrolladores
+{% endblock titulo %}
+{% block cabecera %}
+<h1 class="display-2 font-weight-bold my-3">Listado de desarrolladores</h1>
+{% endblock cabecera %}
+    
+
+
+{% block contenido %}
+<table  class="table">
+    <thead>
+        <tr>
+            <th width="400">            <h2>Crear desarrollador</h2>      </th>
+                <th>       <a
+            href="{% url 'miapp:desarrolladores_form' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+            </a></th>
+
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Especialidades</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for desarrollador in desarrolladores_list %}
+        <tr>
+            <td>{{ desarrollador.id }}</td>
+            <td>{{ desarrollador.nombre }}</td>
+            <td>{{ desarrollador.apellido }}</td>
+            <td>{{ desarrollador.email }}</td>
+            <td>{{ desarrollador.especialidades }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock contenido %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

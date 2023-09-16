@@ -1,0 +1,14 @@
+{% extends 'miapp/base.html' %} 
+{% load static %} 
+{% block titulo %}Registro{% endblock titulo %} 
+{% block cabecera %}<h1 class="display-2 font-weight-bold my-3">Registro<h1>{% endblock cabecera %} 
+{% block contenido %}
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        <button type="submit">Crear Usuario</button>
+    </form>
+{% endblock contenido %}

@@ -1,0 +1,40 @@
+{% extends 'miapp/base.html' %}
+{%load static%}
+{% block titulo %}
+Clientes
+{% endblock titulo %}
+{% block cabecera %}
+<h1 class="display-2 font-weight-bold my-3">Listado de clientes</h1>
+{% endblock cabecera %}
+
+{% block contenido %}
+<table class="table">
+    <thead>
+        <tr>
+            <th width="320">            <h2>Crear cliente</h2>      </th>
+                <th>       <a
+            href="{% url 'miapp:clientes_form' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+            </a></th>
+
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes_list %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.apellido }}</td>
+                <td>{{ cliente.email }}</td>
+                
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

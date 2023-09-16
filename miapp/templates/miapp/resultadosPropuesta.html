@@ -1,0 +1,32 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+
+{% block cabecera %}
+<h1 class="display-2 font-weight-bold my-3">Propuesta buscada</h1>
+{% endblock cabecera %}
+    
+{% block contenido %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Descripcion</th>
+                <th>Fecha de Solicitud</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            {% for propuesta in propuestas %}
+            <tr>
+                <td>{{propuesta.id}}</td>
+                <td>{{propuesta.titulo}}</td>
+                <td>{{propuesta.descripcion}}</td>
+                <td>{{propuesta.fechaSolicitud}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+     </table>
+    
+{% endblock contenido %}

@@ -1,0 +1,141 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with FoodHut landing page.">
+    <meta name="author" content="Devcrud">
+
+    <title>
+    {% block titulo %}
+    Mouca
+    {% endblock titulo %}
+    </title>
+   
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static 'miapp/assets/vendors/themify-icons/css/themify-icons.css'%} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'miapp/assets/vendors/animate/animate.css'%}">
+
+    <!-- Bootstrap + FoodHut main styles -->
+	<link rel="stylesheet" href="{% static 'miapp/assets/css/foodhut.css'%}">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    
+    <!-- Navbar -->
+    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <div> 
+                    <img src="{{ request.session.avatar }}" height="100px" weight="80px"/>
+                 </div>    
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'miapp:inicio' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Acerca de</a>
+                </li>
+                {% if user.is_authenticated  %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'miapp:propuestas'%}">Propuestas<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'miapp:posteos'%}">Posteos<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'miapp:clientes'%}">Clientes<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'miapp:desarrolladores' %}">Desarrolladores<span class="sr-only">(current)</span></a>
+                 </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-info" href="{% url 'miapp:logout' %}">Logout</a>
+                </li>
+                 {% else %}
+                 <a class="nav-link" href="{% url 'miapp:register' %}">Registro</a>
+                 <a class="nav-link" href="{% url 'miapp:login' %}">Login</a>
+                 {% endif %}
+
+            </ul>
+            <a class="navbar-brand m-auto" href="{% url 'miapp:inicio' %}">
+                <img src="{% static 'miapp/assets/imgs/logo.png'%}" class="brand-img" alt="">
+                <span class="brand-txt">Mouca</span>
+            </a>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated  %}
+                <li class="nav-item">
+                <a class="nav-link" href="{%url 'miapp:agregar_avatar' %}">Cargar Avatar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'miapp:editar_perfil' %}">Editar perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'miapp:buscar_propuesta' %}">Busqueda</a>
+                </li>
+                <li class="nav-item">
+                {% endif %}
+                    <a class="nav-link" href="#contact">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'admin:index'%}">Administración</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- header -->
+    <header id="home" class="header">
+        <div class="overlay text-white text-center">
+            {% block cabecera %}
+             <h1 class="display-2 font-weight-bold my-3">Mouca</h1>
+            <h2 class="display-4 mb-5">Dando el Match que necesitabas</h2>
+            <a class="btn btn-lg btn-primary" href="{%url 'miapp:propuestas'%}">Propuestas</a>
+            {% endblock cabecera %}
+ 
+        </div>
+    </header>
+
+{% block contenido %}
+{% endblock contenido %}
+{% block contenido2 %}
+{% endblock contenido2 %}
+
+
+    <!--  About Section  -->
+    <div id="about" class="container-fluid wow fadeIn" id="about"data-wow-duration="1.5s">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 py-2 my-2">
+                        <h2 class="mb-4">Acerca de nosotros</h2>
+                        <p>
+                      En Mouca buscamos la conexión estre desarrolladores y aquellos que soliciten su servicio (PyMEs).
+                      <br>
+Brinda un espacio donde se realizan propuestas laborales especializadas a proyectos de desarrollo y donde los desarrolladores suben sus perfiles para ser contactados.
+<br>Buscamos agilizar procesos de contacto en el rubro.
+                        </p>
+                        <h2 class="mb-4"><a href="https://www.linkedin.com/in/juanmanuelmor%C3%A9-b30687260/">Acerca de mí</a></h2>
+                        <p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 has-img-bg"></div>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <h3>Contacto</h3>
+    
+    <div id="contact" class="text-muted" >
+        <p>En términos legales recordamos que no nos hacemos responsables de los acuerdos entre las partes, solo brindamos un servicio de contacto entre dos individuos.<br>Usar responsablemente </p>
+        <p><span class="ti-email pr-3"></span>EjemplosupportMouca@mail.com</p>
+    </div>
+</footer>
+</html>

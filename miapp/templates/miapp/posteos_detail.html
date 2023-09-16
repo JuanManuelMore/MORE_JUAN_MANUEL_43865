@@ -1,0 +1,40 @@
+{% extends 'miapp/base.html' %} 
+{% load static %} 
+{% block titulo %}Post{% endblock titulo %} 
+{% block cabecera %}<h1 class="display-2 font-weight-bold my-3">Post</h1>{% endblock cabecera %} 
+{% block contenido %}
+<table> 
+    <tr>
+        <td><h2>Post: {{object}}</h2></td>
+    </tr>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Titulo</th>
+      <th>Desarrollo</th>
+      <th>Fecha Max</th>
+      <th>Contacto</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>{{ object.id }}</td>
+      <td>{{ object.titulo }}</td>
+      <td>{{ object.desarrollo }}</td>
+      <td>{{ object.fechaSolicitud }}</td>
+      <td>{{ object.email }}</td>
+    </tr>
+
+  </tbody>
+</table>
+<a
+href="{% url 'miapp:posteos' %}"
+class="btn btn-danger"
+style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+><i class="fa fa-share fa-sm" title="List Back">Volver</i>
+</a>
+{% endblock contenido %}

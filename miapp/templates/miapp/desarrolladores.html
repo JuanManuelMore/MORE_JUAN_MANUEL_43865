@@ -1,0 +1,23 @@
+{% extends 'miapp/base.html' %}
+{%load static%}
+{% block titulo %}
+Desarrolladores
+{% endblock titulo %}
+{% block cabecera %}
+<h1 class="display-2 font-weight-bold my-3">Listado de desarrolladores</h1>
+{% endblock cabecera %}
+    
+{#% block contenido %}
+{% for desarrollador in desarrolladores %}
+<tr>
+    <td>{{ desarrollador.id }}</td>
+    <td>{{ desarrollador.nombre }}</td>
+    <td>{{ desarrollador.apellido }}</td>
+    <td>{{ desarrollador.email }}</td>
+    <td>{{ desarrollador.especialidades }}</td>
+</tr>
+{% endfor %}
+
+{#% endblock contenido %}
+
+    
